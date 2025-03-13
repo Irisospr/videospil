@@ -19,7 +19,7 @@ const timeglas = document.querySelector("#timeglas");
 function start() {
   hideAllScreens();
   document.querySelector("#start").classList.remove("hide");
-  document.querySelector("#play_knap").addEventListener("click", startGame);
+  document.querySelector("#start").addEventListener("click", startGame);
 }
 
 function startGame() {
@@ -137,7 +137,7 @@ function clickOlifur() {
 }
 
 function clickBacon() {
-  console.log("clickFluesvamp");
+  console.log("clickBacon");
 
   bacon_container.removeEventListener("mousedown", clickBacon);
 
@@ -304,14 +304,14 @@ function gameOver() {
   hideAllScreens();
   document.querySelector("#game_over").classList.remove("hide");
   // lyt efter om der bliver klikket på spil-igen-knappen
-  document.querySelector("#spiligen_1").addEventListener("click", startGame);
+  document.querySelector("#spil_igen_1").addEventListener("click", startGame);
 }
 
 function levelComplete() {
   console.log("levelComplete");
   hideAllScreens();
   document.querySelector("#level_complete").classList.remove("hide");
-  document.querySelector("#spiligen_2").addEventListener("click", startGame);
+  document.querySelector("#spil_igen_2").addEventListener("click", startGame);
 }
 
 function generateRandomNumber(antal) {
