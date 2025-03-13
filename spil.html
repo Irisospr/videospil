@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spil</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="layout.css" />
+    <link rel="stylesheet" href="spil.css" />
+    <link rel="stylesheet" href="animationer.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Forside</a></li>
+          <li><a href="spil.html">Spil</a></li>
+          <li><a href="grafik.html">Grafik</a></li>
+          <li><a href="assets.html">Assets</a></li>
+          <li><a href="teknik.html">Teknik</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Veggie Pizzeria</h1>
+    <main>
+      <div id="screen">
+        <div id="game">
+          <div id="game_background"></div>
+
+          <div id="game_elements">
+            <div id="sveppur_container">
+              <div id="sveppur_sprite"></div>
+            </div>
+            <div id="olifur_container">
+              <div id="olifur_sprite"></div>
+            </div>
+            <div id="bacon_container">
+              <div id="bacon_sprite"></div>
+            </div>
+            <div id="pepperoni_container">
+              <div id="pepperoni_sprite"></div>
+            </div>
+          </div>
+          <div id="game_ui">
+            <div id="score_board"><div id="point"></div></div>
+            <div id="energy_board">
+              <div id="heart1"></div>
+              <div id="heart2"></div>
+              <div id="heart3"></div>
+              <div id="liv"></div>
+            </div>
+            <div id="time_board">
+              <div id="timeglas"></div>
+            </div>
+          </div>
+        </div>
+        <div id="start">
+          <div id="play_knap"></div>
+        </div>
+        <div id="game_over">
+          <div id="spiligen_1"></div>
+        </div>
+        <div id="level_complete">
+          <div id="spil_igen_2"></div>
+        </div>
+      </div>
+    </main>
+    <footer>Copyright &copy;Íris Reynisdóttir 2024</footer>
+    <script src="js/game.js"></script>
+  </body>
+</html>

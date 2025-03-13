@@ -1,0 +1,169 @@
+img.startskærm {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.videospil {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.gameover {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.winner {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.liv {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.timer {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 90px;
+}
+
+img.points {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.playgame {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.tryagain {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.playagain {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.good {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.bad {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.activity {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.pizzaone {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.pizzatwo {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.kawaiione {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.kawaiitwo {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.skyssaone {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+img.skyssatwo {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+img.skyssathree {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+img.skyssafour {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+.text {
+  margin: 150px;
+}
+
+.uielementer {
+  margin: 50px;
+}
+.uielementer h2 {
+  font-family: margot, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  text-align: left;
+  color: #b82214;
+}
+
+.skærme h3 {
+  font-family: margot, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  text-align: left;
+  color: #b82214;
+}
+.col {
+  margin: 40px;
+}
+.container_tek {
+  margin: 30px;
+}
+
+.skærme {
+  margin: 25px;
+}
+
+.text_grafik {
+  margin: 100px;
+}
+
+@media (min-width: 800px) {
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
