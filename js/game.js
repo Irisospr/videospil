@@ -3,6 +3,33 @@ window.addEventListener("load", start);
 let mine_point;
 let mine_liv;
 let rndNum;
+let timer;
+let timeLeft = 120;
+
+function startTimer() {
+  // Update the timer every second
+  timer = setInterval(function () {
+    if (timeLeft <= 0) {
+      clearInterval(timer); // Stop the timer when it reaches 0
+      endGame(); // Call a function to end the game
+    } else {
+      timeLeft--;
+      updateTimerDisplay();
+    }
+  }, 1000); // Update every 1000 milliseconds (1 second)
+}
+
+function updateTimerDisplay() {
+  // Convert timeLeft to minutes and seconds
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
+
+  // Format the time to be always two digits (e.g., "02:09")
+  let formattedTime = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+  // Update the display on the page
+  document.getElementById("timer_display").innerText = formattedTime;
+}
 
 const sveppur_container = document.querySelector("#sveppur_container");
 const sveppur_sprite = document.querySelector("#sveppur_sprite");
