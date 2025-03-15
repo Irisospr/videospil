@@ -71,7 +71,7 @@
 
 .timer {
   animation-name: timer_kf;
-  animation-duration: 15s;
+  animation-duration: 30s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
