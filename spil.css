@@ -190,14 +190,6 @@
   background-size: cover;
 }
 
-#timeglas {
-  position: absolute;
-  background-size: cover;
-  width: 100%;
-  aspect-ratio: 125/200;
-  clip-path: inset(100% 0% 0% 0%);
-}
-
 #timer_display {
   font-size: 40px;
   font-family: margot, sans-serif;

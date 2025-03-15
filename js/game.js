@@ -1,47 +1,38 @@
 window.addEventListener("load", start);
-
-let mine_point;
-let mine_liv;
 let rndNum;
+
 let timer;
-let timeLeft = 120;
+let timeLeft = 30; // Countdown in seconds
+let mine_liv = 3; // Player starts with 3 lives
+const timerElement = document.getElementById("timer_display");
+const livesElement = document.getElementById("liv"); // Div for displaying lives
 
-function startTimer() {
-  // Update the timer every second
-  timer = setInterval(function () {
-    if (timeLeft <= 0) {
-      clearInterval(timer); // Stop the timer when it reaches 0
-      endGame(); // Call a function to end the game
-    } else {
-      timeLeft--;
-      updateTimerDisplay();
-    }
-  }, 1000); // Update every 1000 milliseconds (1 second)
-}
+const countdown = setInterval(() => {
+  timeLeft--;
+  timerElement.textContent = timeLeft;
 
-function updateTimerDisplay() {
-  // Convert timeLeft to minutes and seconds
-  let minutes = Math.floor(timeLeft / 60);
-  let seconds = timeLeft % 60;
+  if (timeLeft <= 0) {
+    clearInterval(countdown);
+    showEndScreen();
+    checkGameStatus();
+  }
+}, 1000);
 
-  // Format the time to be always two digits (e.g., "02:09")
-  let formattedTime = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+const foodContainers = {
+  sveppur: document.querySelector("#sveppur_container"),
+  olifur: document.querySelector("#olifur_container"),
+  bacon: document.querySelector("#bacon_container"),
+  pepperoni: document.querySelector("#pepperoni_container"),
+};
 
-  // Update the display on the page
-  document.getElementById("timer_display").innerText = formattedTime;
-}
+const foodSprites = {
+  sveppur: document.querySelector("#sveppur_sprite"),
+  olifur: document.querySelector("#olifur_sprite"),
+  bacon: document.querySelector("#bacon_sprite"),
+  pepperoni: document.querySelector("#pepperoni_sprite"),
+};
 
-const sveppur_container = document.querySelector("#sveppur_container");
-const sveppur_sprite = document.querySelector("#sveppur_sprite");
-const olifur_container = document.querySelector("#olifur_container");
-const olifur_sprite = document.querySelector("#olifur_sprite");
-
-const bacon_container = document.querySelector("#bacon_container");
-const bacon_sprite = document.querySelector("#bacon_sprite");
-const pepperoni_container = document.querySelector("#pepperoni_container");
-const pepperoni_sprite = document.querySelector("#pepperoni_sprite");
-
-const timeglas = document.querySelector("#timeglas");
+const timeboard = document.querySelector("#timeboard");
 
 function start() {
   hideAllScreens();
@@ -63,56 +54,11 @@ function startGame() {
   document.querySelector("#heart2").classList.remove("hide");
   document.querySelector("#heart3").classList.remove("hide");
 
-  timeglas.classList.add("timer");
-  timeglas.addEventListener("animationend", endGame);
-
-  rndNum = generateRandomNumber(6);
-  let rndFaldPos = "faldpos" + rndNum;
-  sveppur_container.classList.add(rndFaldPos);
-
-  rndNum = generateRandomNumber(6);
-  rndFaldPos = "faldpos" + rndNum;
-  olifur_container.classList.add(rndFaldPos);
-
-  rndNum = generateRandomNumber(3);
-  rndDelay = "delay" + rndNum;
-  sveppur_container.classList.add(rndDelay);
-
-  rndNum = generateRandomNumber(3);
-  rndDelay = "delay" + rndNum;
-  olifur_container.classList.add(rndDelay);
-
-  rndNum = generateRandomNumber(3);
-  let rndSpeed = "speed" + rndNum;
-  sveppur_container.classList.add(rndSpeed);
-
-  rndNum = generateRandomNumber(3);
-  rndSpeed = "speed" + rndNum;
-  olifur_container.classList.add(rndSpeed);
-
-  rndNum = generateRandomNumber(6);
-  rndFaldPos = "faldpos" + rndNum;
-  bacon_container.classList.add(rndFaldPos);
-
-  rndNum = generateRandomNumber(3);
-  rndFaldPos = "faldpos" + rndNum;
-  pepperoni_container.classList.add(rndFaldPos);
-
-  rndNum = generateRandomNumber(3);
-  rndDelay = "delay" + rndNum;
-  bacon_container.classList.add(rndDelay);
-
-  rndNum = generateRandomNumber(3);
-  rndDelay = "delay" + rndNum;
-  pepperoni_container.classList.add(rndDelay);
-
-  rndNum = generateRandomNumber(2);
-  rndSpeed = "speed" + rndNum;
-  bacon_container.classList.add(rndSpeed);
-
-  rndNum = generateRandomNumber(2);
-  rndSpeed = "speed" + rndNum;
-  pepperoni_container.classList.add(rndSpeed);
+  function setRandomPositionAndSpeed(food) {
+    const rndPos = `faldpos${generateRandomNumber(6)}`;
+    const rndSpeed = `speed${generateRandomNumber(3)}`;
+    foodContainers[food].classList.add(rndPos, rndSpeed);
+  }
 
   sveppur_container.classList.add("fald");
   olifur_container.classList.add("fald");
@@ -315,8 +261,9 @@ function endGame() {
   olifur_container.classList = "";
   bacon_container.classList = "";
   pepperoni_container.classList = "";
-  timeglas.classList = "";
-  timeglas.removeEventListener("animationend", endGame);
+
+  time_board.classList = "";
+  time_board.removeEventListener("animationend", endGame);
 
   if (mine_point < 4 || mine_liv === 0) {
     gameOver();
@@ -325,20 +272,35 @@ function endGame() {
   }
 }
 
+// Function to show Game Over or Level Complete screen
+function showGameOverScreen() {
+  if (playerHasEnoughPoints()) {
+    document.getElementById("level_complete").style.display = "block"; // Show level complete screen
+  } else {
+    document.getElementById("game_over").style.display = "block"; // Show game over screen
+  }
+}
+function checkGameStatus() {
+  if (mine_point >= 4) {
+    // Check if player has 4 or more points
+    levelComplete(); // Show level complete screen
+  } else if (mine_liv === 0) {
+    // If no lives left
+    gameOver(); // Show game over screen
+  }
+}
+
 function gameOver() {
-  console.log("gameOver");
-  // vis game over skærm
-  hideAllScreens();
-  document.querySelector("#game_over").classList.remove("hide");
-  // lyt efter om der bliver klikket på spil-igen-knappen
-  document.querySelector("#spil_igen_1").addEventListener("click", startGame);
+  document.getElementById("game_over").style.display = "block"; // Show the game over screen
 }
 
 function levelComplete() {
-  console.log("levelComplete");
-  hideAllScreens();
-  document.querySelector("#level_complete").classList.remove("hide");
-  document.querySelector("#spil_igen_2").addEventListener("click", startGame);
+  document.getElementById("level_complete").style.display = "block"; // Show the level complete screen
+}
+
+function playerHasEnoughPoints() {
+  const score = parseInt(document.getElementById("point").textContent);
+  return score >= 4; // Winning condition is 4 or more points
 }
 
 function generateRandomNumber(antal) {
