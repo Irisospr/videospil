@@ -1,6 +1,6 @@
 window.addEventListener("load", start);
 let rndNum;
-
+let mine_point;
 let timer;
 let timeLeft = 30; // Countdown in seconds
 let mine_liv = 3; // Player starts with 3 lives
@@ -17,6 +17,8 @@ const countdown = setInterval(() => {
     checkGameStatus();
   }
 }, 1000);
+
+console.log("Mine Point: " + mine_point);
 
 const foodContainers = {
   sveppur: document.querySelector("#sveppur_container"),
